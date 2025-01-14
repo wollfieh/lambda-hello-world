@@ -1,12 +1,12 @@
 name: Lint
 on:
   push:
-    # paths:
-    #   - 'src/**'
+    paths:
+      - 'src/**'
 
 jobs:
-  lint:
-    name: Lint
+  lint-job:
+    name: Lint-job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
