@@ -11,8 +11,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
 
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
           working-directory: ./src
+      - name: Test
+        uses: n8maninger/action-golang-test@v1
+        with:
+          args: "-race;-failfast;-tags=testing debug netgo"
