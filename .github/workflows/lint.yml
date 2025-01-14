@@ -1,8 +1,14 @@
 name: Lint
 on:
+  pull_request:
+      branches:
+          - main
+      paths:
+      - '**/*.go'
   push:
     paths:
       - '**/*.go'
+
 
 jobs:
   lint:
@@ -11,13 +17,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      # - name: Setup Go
-      #   uses: actions/setup-go@v5
-      #   with:
-      #     go-version: stable
 
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v6
+      - name: Test
+        uses: n8maninger/action-golang-test@v1
+        with:
+          args: "-race;-failfast;-tags=testing debug netgo"
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Test
         uses: n8maninger/action-golang-test@v1
         with:
