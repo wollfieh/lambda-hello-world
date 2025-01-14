@@ -2,7 +2,7 @@ name: Lint
 on:
   push:
     paths:
-      - 'src/**'
+      - '**/*.go'
 
 jobs:
   lint-job:
