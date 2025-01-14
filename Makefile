@@ -6,7 +6,7 @@ image:
 push: image
 	docker push ${DOCKER_TAG}
 
-lint|test: *.go
+lint: *.go
 	go fmt
 	golangci-lint run ./...
 	go test ./...
