@@ -6,6 +6,10 @@ image:
 push: image
 	docker push ${DOCKER_TAG}
 
+lint|test: *.go
+	go fmt
+	golangci-lint run ./...
+	go test ./...
 
 test:
 	docker run --rm -p 9000:8080 --entrypoint /usr/local/bin/aws-lambda-rie ${DOCKER_TAG} ./main
