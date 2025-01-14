@@ -1,5 +1,8 @@
 name: Lint
-on: push
+on:
+  push:
+    paths:
+      - 'src/**'
 
 jobs:
   lint:
@@ -14,5 +17,6 @@ jobs:
         with:
           go-version: 'stable'
       - name: Lint
+        working-directory: ./src
         run: go get -u golang.org/x/lint/golint
       - run: golint ./...
