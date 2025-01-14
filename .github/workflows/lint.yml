@@ -1,8 +1,8 @@
 name: Lint
 on:
   push:
-    paths:
-      - 'src/**'
+    # paths:
+    #   - 'src/**'
 
 jobs:
   lint-job:
@@ -12,10 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: 'stable'
+      # - name: Setup Go
+      #   uses: actions/setup-go@v5
+      #   with:
+      #     go-version: 'stable'
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
