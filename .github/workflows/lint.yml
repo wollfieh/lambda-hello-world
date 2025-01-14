@@ -18,10 +18,7 @@ jobs:
 
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v6
-        with:
-          working-directory: ./src
       - name: Test
         uses: n8maninger/action-golang-test@v1
         with:
           args: "-race;-failfast;-tags=testing debug netgo"
-          working-directory: ./src
