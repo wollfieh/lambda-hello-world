@@ -18,6 +18,4 @@ jobs:
           go-version: 'stable'
       - name: Lint
         working-directory: ./src
-        run: |
-          pwd
-          ls -la
+        run: golangci-lint run ./...
